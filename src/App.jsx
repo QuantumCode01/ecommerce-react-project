@@ -15,6 +15,8 @@ import { useEffect } from 'react';
 function App() {
       const [count, setCount]=useState(0);
      const[cart,setCart]=useState([]);
+
+     
       async function fetchCartItem(){
         const data= await getCartItems();
         let cart=data;

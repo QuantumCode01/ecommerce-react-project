@@ -43,7 +43,8 @@ fetchCart();}
         </div>
 
         <div className="product-price">
-          ${(data.priceCents / 100).toFixed(2)}
+          ${(data.priceCents / 100).toFixed(2)}<br></br>
+          
         </div>
 
         <div className="product-quantity-container">

@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useState,useRef } from 'react'
 import { NavLink } from 'react-router-dom';
+
 import './Header.css';
+import { useCart } from "../../Context/Context";
 export default function Header({cartCount}) {
+    const {searchterm,handleSearch,getData}=useCart();
   return (
     <div>
         <div className="header">
@@ -15,9 +18,9 @@ export default function Header({cartCount}) {
         </div>
 
         <div className="middle-section">
-            <input className="search-bar" type="text" placeholder="Search" />
-
-            <button className="search-button">
+            <input className="search-bar"  type="text" placeholder="Search" onChange={handleSearch} />
+           
+            <button className="search-button" onClick={getData}>
             <img className="search-icon" src="/images/icons/search-icon.png" />
             </button>
         </div>

@@ -5,14 +5,17 @@ import "./HomePage.css";
 import { Link } from "react-router-dom";
 import { getProducts } from "../Api/Api";
 import ProductCard from "../Components/ProductCard/ProductCard";
+import { useCart } from "../Context/Context";
 export default function HomePage({fetchCart}) {
-  const [Products, setProducts]=useState([]);
+ 
+  const {searchterm,Products,setProducts}=useCart();
   async function fetchData(){
-    const data=await getProducts();
-    setProducts(data);
-
+    if(!searchterm){
+         const data=await getProducts();
+    setProducts(data); 
+    }
+ 
   }
-
   useEffect(()=>{
     fetchData();
   },[])
