@@ -18,7 +18,11 @@ export default function Header({cartCount}) {
         </div>
 
         <div className="middle-section">
-            <input className="search-bar"  type="text" placeholder="Search" onChange={handleSearch} />
+            <input className="search-bar"  type="text" placeholder="Search" onChange={handleSearch} onKeyDown={(e) => {
+    if (e.key === "Enter") {
+      getData(); // function to trigger search API
+    }
+  }} />
            
             <button className="search-button" onClick={getData}>
             <img className="search-icon" src="/images/icons/search-icon.png" />
