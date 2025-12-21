@@ -54,7 +54,27 @@ export async function getPaymentSummary(){
 }
 export async function getOrders(){
   try{
-    const response=await axios.get(`${API_URL}/orders?expand=products`)
+    const token = localStorage.getItem("accessToken");
+    const response=await axios.get(`${API_URL}/orders?expand=products`,{
+      headers:{
+        Authorization:`Bearer ${token}`,
+      }
+    })
+    return (response.data);
+  }catch(error){
+    console.log(error.message);
+    throw error;
+  }
+}
+
+export async function getUser(){
+  try{
+     const token = localStorage.getItem("accessToken");
+    const response=await axios.get(`${API_URL}/auth/user`,{
+      headers:{
+        Authorization:`Bearer ${token}`,
+      }
+    })
     return (response.data);
   }catch(error){
     console.log(error.message);
@@ -102,6 +122,17 @@ export async function DeleteCartItem(productId){
 export async function placeOrder(){
   try{
     const response=await axios.post(`${API_URL}/orders`)
+    return (response.data);
+  }catch(error){
+    console.log(error.message);
+    throw error;
+  }
+}
+export async function loginauthentication(payload){
+  try{
+    const response=await axios.post(`${API_URL}/auth/login`, payload, {
+  headers: { "Content-Type": "application/json" }
+});
     return (response.data);
   }catch(error){
     console.log(error.message);

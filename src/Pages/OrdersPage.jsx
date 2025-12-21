@@ -9,29 +9,29 @@ import { addToCart } from "../Api/Api";
 export default function OrdersPage({fetchCart}) {
     const [added,setAdded]=useState(false);
 
-  const [orders, setOrders] = useState([]);
-  async function fetchOrders() {
-    const data = await getOrders();
-    setOrders(data);
-  }
-
-   async function handleAddtoCart(payload) {
-      try {
-        const data = await addToCart(payload);
-        console.log(data);
-          fetchCart();
-        setAdded(true);
-        setTimeout(()=>{
-           setAdded(false);
-        },1000)
-    
-      } catch (error) {
-        console.log(error.message);
-      }
+    const [orders, setOrders] = useState([]);
+    async function fetchOrders() {
+      const data = await getOrders();
+      setOrders(data);
     }
-  useEffect(() => {
-    fetchOrders();
-  }, []);
+
+    async function handleAddtoCart(payload) {
+        try {
+          const data = await addToCart(payload);
+          console.log(data);
+            fetchCart();
+          setAdded(true);
+          setTimeout(()=>{
+            setAdded(false);
+          },1000)
+      
+        } catch (error) {
+          console.log(error.message);
+        }
+      }
+    useEffect(() => {
+      fetchOrders();
+    }, []);
   return (
     <div>
       <title>Order</title>
