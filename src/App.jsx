@@ -62,13 +62,13 @@ function MainApp() {
 
       <Routes>
         <Route element={<Protected/>}>
-            <Route path="/" element={<HomePage fetchCart={fetchCartItem} />} />
+          
             <Route path="/order" element={<OrdersPage fetchCart={fetchCartItem} />} />
              <Route path="/checkout" element={<CheckoutPage cart={cart} fetchCart={fetchCartItem} />} />
              <Route path="/profile" element={<Profile/>}/>
         </Route>
         
-       
+         <Route path="/" element={<HomePage fetchCart={fetchCartItem} />} />
         <Route path="/cart" element={<CartPage />} />
        
         <Route path="/track/:orderId/:productId" element={<Tracking fetchCart={fetchCartItem} />} />
