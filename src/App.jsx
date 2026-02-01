@@ -12,6 +12,8 @@ import Tracking from "./Pages/Tracking";
 import Login from "./Pages/Login";
 import Header from "./Components/HeaderDetails/Header";
 import Protected from "./Pages/Protected";
+import Forgotpassword from "./Pages/Forgotpassword";
+import Resetpassword from "./Pages/Resetpassword";
 
 // Context
 import { CartProvider, useCart } from "./Context/Context";
@@ -63,12 +65,15 @@ function MainApp() {
       <Routes>
         <Route element={<Protected/>}>
           
-            <Route path="/order" element={<OrdersPage fetchCart={fetchCartItem} />} />
+             <Route path="/order" element={<OrdersPage fetchCart={fetchCartItem} />} />
              <Route path="/checkout" element={<CheckoutPage cart={cart} fetchCart={fetchCartItem} />} />
              <Route path="/profile" element={<Profile/>}/>
         </Route>
         
          <Route path="/" element={<HomePage fetchCart={fetchCartItem} />} />
+         <Route path="/forgot-password" element={<Forgotpassword fetchCart={fetchCartItem} />} />
+         <Route path="/reset-password/:token" element={<Resetpassword fetchCart={fetchCartItem}/>} />
+
         <Route path="/cart" element={<CartPage />} />
        
         <Route path="/track/:orderId/:productId" element={<Tracking fetchCart={fetchCartItem} />} />

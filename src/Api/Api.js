@@ -141,3 +141,40 @@ export async function loginauthentication(payload){
 }
 
 
+export async function signupAuthentication(payload){
+  try{
+    const response=await axios.post(`${API_URL}/auth/signup`, payload, {
+  headers: { "Content-Type": "application/json" }
+   });
+    return (response.data);
+  }catch(error){
+    console.log(error.message);
+    throw error;
+  }
+}
+
+
+export async function forgetpassword(payload){
+  try{
+    const response=await axios.post(`${API_URL}/auth/forgot-password`, payload, {
+  headers: { "Content-Type": "application/json" }
+   });
+    return (response.data);
+  }catch(error){
+    console.log(error.message);
+    throw error;
+  }
+}
+export async function resetPassword(token,payload){
+  try{
+    const response=await axios.post(`${API_URL}/auth/reset-password/${token}`, payload, {
+  headers: { "Content-Type": "application/json" }
+   });
+    return (response.data);
+  }catch(error){
+    console.log(error.message);
+    throw error;
+  }
+}
+
+

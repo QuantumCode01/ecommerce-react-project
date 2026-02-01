@@ -16,6 +16,9 @@ button {
   font-size: 14px;
   cursor: pointer;
 }
+.card-body button{
+  font-size:20px;
+}
 
 select {
   cursor: pointer;
